@@ -29,7 +29,7 @@ public class SpringApplication extends org.springframework.boot.SpringApplicatio
     }
 
     public SpringApplication(Class<?>[] primarySources) {
-        super(primarySources);
+       super(primarySources);
     }
 
     public static ConfigurableApplicationContext run(Class<?> primarySource,
