@@ -137,7 +137,12 @@
 	},
 	{
 		"name": "org.springframework.boot.diagnostics.analyzer.ValidationExceptionFailureAnalyzer",
-		"allDeclaredConstructors": true
+		"methods": [
+			{
+				"name": "<init>",
+				"parameterTypes": []
+			}
+		]
 	},
 	{
 		"name": "org.springframework.boot.diagnostics.analyzer.InvalidConfigurationPropertyNameFailureAnalyzer",

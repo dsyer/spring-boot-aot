@@ -1,27 +1,27 @@
 package com.acme;
 
-import java.security.CodeSource;
-import java.security.ProtectionDomain;
+import java.lang.reflect.Constructor;
 
-import org.apache.commons.logging.Log;
+import org.springframework.util.ReflectionUtils;
 
 public class TestApplication {
 
     public static void main(String[] args) throws Exception {
-        System.out.println(new TestApplication().getLocation(Log.class));
+        System.out.println(new TestApplication().getLocation());
     }
-    private Object getLocation(Class<?> type) {
+
+    private Object getLocation() throws Exception {
+        String analyzerName = "org.springframework.boot.diagnostics.analyzer.ValidationExceptionFailureAnalyzer";
         try {
-            ProtectionDomain protectionDomain = type.getProtectionDomain();
-            CodeSource codeSource = protectionDomain.getCodeSource();
-            if (codeSource != null) {
-                return codeSource.getLocation();
-            }
+            Constructor<?> constructor = Class.forName(analyzerName)
+                    .getDeclaredConstructor();
+            ReflectionUtils.makeAccessible(constructor);
+            return constructor.newInstance();
         }
-        catch (SecurityException ex) {
-            // Unable to determine location
+        catch (Throwable ex) {
+            System.out.println("Failed to load " + analyzerName + ", " + ex);
+            return null;
         }
-        return "unknown location";
     }
 
 }
