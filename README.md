@@ -1,8 +1,8 @@
-Native image generation works, but requires a patch for https://jira.spring.io/browse/SPR-17198
+Native image generation works:
 
 ```
 $ mvn clean install
-$ CP=`java -jar target/spring-init-experiment-1.0-SNAPSHOT.jar --thin.classpath --thin.profile=graal`
+$ CP=`java -jar target/*.jar --thin.classpath --thin.profile=graal`
 $ native-image -Dorg.springframework.boot.logging.LoggingSystem=org.springframework.boot.logging.java.JavaLoggingSystem -H:Name=target/app -H:IncludeResources='META-INF/spring.factories|org/springframework/boot/logging/.*' -H:ReflectionConfigurationFiles=app.json --report-unsupported-elements-at-runtime -cp $CP com.acme.SampleApplication
 $ ./target/app -Dorg.springframework.boot.logging.LoggingSystem=org.springframework.boot.logging.java.JavaLoggingSystem
 11:09:17.864 [main] DEBUG org.springframework.boot.context.logging.ClasspathLoggingApplicationListener - Application started with classpath: unknown
