@@ -96,6 +96,10 @@
 		"allDeclaredConstructors": true
 	},
 	{
+		"name": "org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientPropertiesEnvironmentPostProcessor",
+		"allDeclaredConstructors": true
+	},
+	{
 		"name": "org.springframework.boot.diagnostics.analyzer.BeanCurrentlyInCreationFailureAnalyzer",
 		"allDeclaredConstructors": true
 	},
