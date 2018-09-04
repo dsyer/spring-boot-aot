@@ -10,8 +10,6 @@ public class SampleApplication {
                 new Class<?>[] { SampleApplication.class });
         app.setApplicationContextClass(GenericApplicationContext.class);
         app.setWebApplicationType(WebApplicationType.NONE);
-        // app.addInitializers(new SampleConfiguration());
-        app.setRegisterShutdownHook(false);
         app.run(args);
     }
 }
